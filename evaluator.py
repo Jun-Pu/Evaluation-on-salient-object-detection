@@ -20,21 +20,21 @@ class Eval_thread():
         start_time = time.time()
         mae = self.Eval_mae()
         max_f = self.Eval_fmeasure()
-        max_e = self.Eval_Emeasure()
+        mean_e = self.Eval_Emeasure()
         s = self.Eval_Smeasure()
         fbw = self.Eval_Fbw_measure()
         self.LOG('{} dataset with {} method get {:.4f} mae, {:.4f} max-fmeasure, {:.4f} mean-Emeasure, {:.4f} S-measure, '
                  '{:.4f} Fbw-measure.\n'
-                 .format(self.dataset, self.method, mae, max_f, max_e, s, fbw))
+                 .format(self.dataset, self.method, mae, max_f, mean_e, s, fbw))
 
         return '[cost:{:.4f}s]{} dataset with {} method get {:.4f} mae, {:.4f} max-fmeasure, {:.4f} mean-Emeasure,' \
                ' {:.4f} S-measure, {:.4f} Fbw-measure'\
-            .format(time.time()-start_time, self.dataset, self.method, mae, max_f, max_e, s, fbw)
+            .format(time.time()-start_time, self.dataset, self.method, mae, max_f, mean_e, s, fbw)
 
     def Eval_mae(self):
         print('eval[MAE]:{} dataset with {} method.'.format(self.dataset, self.method))
         avg_mae, img_num = 0.0, 0.0
-        #mea_list = [] # for debug
+        #mae_list = [] # for debug
         with torch.no_grad():
             trans = transforms.Compose([transforms.ToTensor()])
             for pred, gt in self.loader:
@@ -46,7 +46,7 @@ class Eval_thread():
                     gt = trans(gt)
                 mea = torch.abs(pred - gt).mean()
                 if mea == mea: # for Nan
-                    #mea_list.append(mea)
+                    #mae_list.append(mea)
                     avg_mae += mea
                     img_num += 1.0
             avg_mae /= img_num
