@@ -13,15 +13,6 @@ Note that the totally black ground truths are considered in E-measure, weighted 
 
 If you find the code useful to your research, please cite the following papers.
 ```
-@inproceedings{fan2018SOC,
-	title={Salient Objects in Clutter: Bringing Salient Object Detection to the Foreground},
-	author={Fan, Deng-Ping and Cheng, Ming-Ming and Liu, Jiang-Jiang and Gao, Shang-Hua and Hou, Qibin and Borji, Ali},
-	booktitle = {European Conference on Computer Vision (ECCV)},
-	year={2018},
-	organization={Springer}
-}
-
-
 @inproceedings{fan2017structure,
 	title={{Structure-measure: A New Way to Evaluate Foreground Maps}},
 	author={Fan, Deng-Ping and Cheng, Ming-Ming and Liu, Yun and Li, Tao and Borji, Ali},
@@ -39,5 +30,12 @@ If you find the code useful to your research, please cite the following papers.
 	pages={698--704},
 	note={\url{http://dpfan.net/e-measure/}},
 	year={2018}
+}
+
+@article{zhang2020iSOD,
+  title={A Fixation-based 360 $\{$$\backslash$deg$\}$ Benchmark Dataset for Salient Object Detection},
+  author={Zhang, Yi and Zhang, Lu and Hamidouche, Wassim and Deforges, Olivier},
+  journal={arXiv preprint arXiv:2001.07960},
+  year={2020}
 }
 ```
