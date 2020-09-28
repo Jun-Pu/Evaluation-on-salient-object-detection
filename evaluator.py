@@ -19,23 +19,23 @@ class Eval_thread():
     def run(self):
         start_time = time.time()
         mae = self.Eval_MAE()
-        #max_f = self.Eval_Fmeasure()
-        #max_e = self.Eval_Emeasure()
-        #s_alpha05 = self.Eval_Smeasure(alpha=0.5)
-        #s_alpha07 = self.Eval_Smeasure(alpha=0.7)
-        #fbw = self.Eval_Fbw_measure()
-        #self.LOG('{} dataset with {} method get {:.4f} mae, {:.4f} max-fmeasure, {:.4f} max-Emeasure, '
-        #        '{:.4f} S-measure_alpha05, {:.4f} S-measure_alpha07, {:.4f} Fbw-measure.\n'
-        #       .format(self.dataset, self.method, mae, max_f, max_e, s_alpha05, s_alpha07, fbw))
+        max_f = self.Eval_Fmeasure()
+        max_e = self.Eval_Emeasure()
+        s_alpha05 = self.Eval_Smeasure(alpha=0.5)
+        s_alpha07 = self.Eval_Smeasure(alpha=0.7)
+        fbw = self.Eval_Fbw_measure()
+        self.LOG('{} dataset with {} method get {:.4f} mae, {:.4f} max-fmeasure, {:.4f} max-Emeasure, '
+                '{:.4f} S-measure_alpha05, {:.4f} S-measure_alpha07, {:.4f} Fbw-measure.\n'
+               .format(self.dataset, self.method, mae, max_f, max_e, s_alpha05, s_alpha07, fbw))
 
-        #return '[cost:{:.4f}s]{} dataset with {} method get {:.4f} mae, {:.4f} max-fmeasure, {:.4f} max-Emeasure,' \
-        #       ' {:.4f} S-measure_alpha05, {:.4f} S-measure_alpha07, {:.4f} Fbw-measure'\
-        #       .format(time.time()-start_time, self.dataset, self.method, mae, max_f, max_e, s_alpha05, s_alpha07, fbw)
+        return '[cost:{:.4f}s]{} dataset with {} method get {:.4f} mae, {:.4f} max-fmeasure, {:.4f} max-Emeasure,' \
+               ' {:.4f} S-measure_alpha05, {:.4f} S-measure_alpha07, {:.4f} Fbw-measure'\
+               .format(time.time()-start_time, self.dataset, self.method, mae, max_f, max_e, s_alpha05, s_alpha07, fbw)
 
-        self.LOG(
-            '{} dataset with {} method get {:.4f} mae\n'.format(self.dataset, self.method, mae))
-        return '[cost:{:.4f}s]{} dataset with {} method get {:.4f} mae'\
-            .format(time.time()-start_time, self.dataset, self.method, mae)
+        #self.LOG(
+        #    '{} dataset with {} method get {:.4f} mae\n'.format(self.dataset, self.method, mae))
+        #return '[cost:{:.4f}s]{} dataset with {} method get {:.4f} mae'\
+        #    .format(time.time()-start_time, self.dataset, self.method, mae)
 
     def Eval_MAE(self):
         fLog = open(os.getcwd() + '/' + self.dataset + '_' + self.method + '_MAE' + '.txt', 'w')
