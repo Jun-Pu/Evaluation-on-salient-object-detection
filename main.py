@@ -17,7 +17,8 @@ def main(cfg):
     if cfg.methods is None:
         method_names = os.listdir(pred_dir)
     else:
-        method_names = cfg.methods.split(' ')
+        #method_names = cfg.methods.split(' ')
+        method_names = cfg.methods
     if cfg.datasets is None:
         dataset_names = os.listdir(gt_dir)
     else:
@@ -33,9 +34,11 @@ def main(cfg):
         print(thread.run())
 
 if __name__ == "__main__":
+    DATA_NAME = os.listdir(os.getcwd() + '/pred/')
+    DATA_NAME.sort(key=lambda x: x[:])
     parser = argparse.ArgumentParser()
-    parser.add_argument('--methods', type=str, default='GCPANet')
-    parser.add_argument('--datasets', type=str, default='F360iSOD')
+    parser.add_argument('--methods', type=str, default=DATA_NAME)
+    parser.add_argument('--datasets', type=str, default='HSAV360')
     parser.add_argument('--root_dir', type=str, default=os.getcwd())
     parser.add_argument('--save_dir', type=str, default=os.getcwd() + '/score/')
     parser.add_argument('--cuda', type=bool, default=True)
