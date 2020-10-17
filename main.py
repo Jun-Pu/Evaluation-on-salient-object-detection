@@ -22,8 +22,8 @@ def main(cfg):
     if cfg.datasets is None:
         dataset_names = os.listdir(gt_dir)
     else:
-        dataset_names = cfg.datasets.split(' ')
-    
+        #dataset_names = cfg.datasets.split(' ')
+        dataset_names = cfg.datasets
     threads = []
     for dataset in dataset_names:
         for method in method_names:
@@ -34,11 +34,13 @@ def main(cfg):
         print(thread.run())
 
 if __name__ == "__main__":
-    DATA_NAME = os.listdir(os.getcwd() + '/pred/')
+    MODEL_NAME = os.listdir(os.getcwd() + '/pred/')
+    MODEL_NAME.sort(key=lambda x: x[:])
+    DATA_NAME = os.listdir(os.getcwd() + '/gt/')
     DATA_NAME.sort(key=lambda x: x[:])
     parser = argparse.ArgumentParser()
-    parser.add_argument('--methods', type=str, default=DATA_NAME)
-    parser.add_argument('--datasets', type=str, default='HSAV360')
+    parser.add_argument('--methods', type=str, default=MODEL_NAME)
+    parser.add_argument('--datasets', type=str, default=DATA_NAME)
     parser.add_argument('--root_dir', type=str, default=os.getcwd())
     parser.add_argument('--save_dir', type=str, default=os.getcwd() + '/score/')
     parser.add_argument('--cuda', type=bool, default=True)
