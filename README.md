@@ -4,8 +4,6 @@ A PYTHON implementation of popular SOD metrics including MAE, F-measure, S-measu
 ---
 A fast evaluation on salient object detection with GPU implementation including **MAE, Max F-measure, S-measure, E-measure**.
 
-Code are reimplemented from the matlab version which are available from http://dpfan.net/, modified from https://github.com/Hanqer/Evaluate-SOD.
-
 Note that the totally black ground truths are considered in E-measure, weighted F-measure and S-measure; excluded in F-measure (which is consistent with the Matlab code from https://github.com/wenguanwang/SODsurvey).
 
 * GPU implementation with pytorch which can be easier embedding into eval code.
